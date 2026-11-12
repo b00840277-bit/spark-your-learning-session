@@ -1,5 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
+import { SESSION2 } from "@/data/session2";
+import { GuestSessionView } from "@/components/session/GuestSessionView";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -175,7 +177,7 @@ const SESSIONS: Session[] = [
       },
     ],
   },
-  { id: "s2", label: "Session 2", title: "Guest Speaker", active: false },
+  { id: SESSION2.id, label: SESSION2.label, title: SESSION2.title, active: true },
   { id: "s3", label: "Session 3", title: "Guest Speaker", active: false },
   { id: "s4", label: "Session 4", title: "Guest Speaker", active: false },
 ];
@@ -212,7 +214,7 @@ function Index() {
                       : "cursor-not-allowed border-transparent text-muted-foreground/60"
                 }`}
               >
-                {s.label} — {s.title}
+                {s.label} {s.id === SESSION2.id ? "·" : "—"} {s.title}
                 {!s.active && <span className="ml-2 text-xs font-medium uppercase tracking-widest text-gold">Soon</span>}
               </button>
             ))}
@@ -229,6 +231,8 @@ function Index() {
             quiz below to see what stuck.
           </p>
         </div>
+
+        {current.id === SESSION2.id && <GuestSessionView session={SESSION2} />}
 
         {current.summary && <SummaryCards cards={current.summary} />}
 
