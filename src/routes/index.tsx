@@ -231,6 +231,14 @@ function Index() {
           </p>
         </div>
 
+        {current.id === "s1" && (
+          <div className="mt-10 border border-border bg-card px-6 py-6 shadow-[0_1px_3px_rgba(15,23,42,0.05)] sm:px-10">
+            <p className="text-[11px] font-semibold uppercase tracking-[0.25em] text-gold">LAUNCHLAB · 9 OCTOBER 2026</p>
+            <h3 className="mt-2 text-2xl tracking-tight">Yibo, Nirvan and Rishabh</h3>
+            <p className="mt-1 text-sm font-medium text-foreground">Claude Design, Claude Code, GitHub and Vercel</p>
+          </div>
+        )}
+
         {current.id === SESSION2.id && <GuestSessionView session={SESSION2} />}
 
         {current.summary && <SummaryCards cards={current.summary} />}
