@@ -86,11 +86,11 @@ export const SESSION2: GuestSession = {
       ],
     },
     {
-      title: "Takeaways",
+      title: "My takeaways",
       bullets: [
-        "Roles beat one giant prompt: small specialised chats, one job each.",
-        "Fresh-eyes review and the human approval step keep quality and judgment in the loop.",
-        "Scoring creative work with explicit lenses turns feedback into measurable iteration.",
+        "Small chats with one job each work better than one giant prompt.",
+        "A fresh-eyes review and a human approval step keep the quality up.",
+        "Scoring creative work through clear lenses (BBH, Ogilvy, McCann) makes feedback easier to act on.",
       ],
     },
   ],

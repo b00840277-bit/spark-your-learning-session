@@ -87,7 +87,7 @@ const SESSION1_SUMMARY: SummaryCard[] = [
       {
         title: "Authentication & Tokens",
         bullets: [
-          { term: "Sign Up", desc: "creates a new user row with an email and an encrypted password." },
+          { term: "Sign Up", desc: "creates a new user row with an email and a hashed (scrambled) password." },
           { term: "Log In", desc: "verifies credentials and issues a temporary session Token — a digital pass that authenticates requests without repeated password entries." },
           { term: "Log Out", desc: "discards the token from browser memory." },
         ],
@@ -214,7 +214,7 @@ function Index() {
                       : "cursor-not-allowed border-transparent text-muted-foreground/60"
                 }`}
               >
-                {s.label} {s.id === SESSION2.id ? "·" : "—"} {s.title}
+                {s.label} — {s.title}
                 {!s.active && <span className="ml-2 text-xs font-medium uppercase tracking-widest text-gold">Soon</span>}
               </button>
             ))}
@@ -227,8 +227,7 @@ function Index() {
           <p className="text-[11px] font-semibold uppercase tracking-[0.25em] text-gold">{current.label}</p>
           <h2 className="mt-2 text-4xl leading-tight tracking-tight sm:text-5xl">{current.title}</h2>
           <p className="mt-4 text-base leading-relaxed text-muted-foreground">
-            A considered recap of what the session covered, drawn strictly from the course presentation — then a short
-            quiz below to see what stuck.
+            My notes on the session, based on the slides, followed by a short quiz.
           </p>
         </div>
 
