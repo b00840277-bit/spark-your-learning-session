@@ -6,8 +6,8 @@ import { GuestSessionView } from "@/components/session/GuestSessionView";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Guest Speaker Hub | ESSEC Digital Platforms" },
-      { name: "description", content: "Session recaps and interactive quizzes for the ESSEC Digital Platforms guest speaker series." },
+      { title: "The Digital Platforms Hub | ESSEC MMD" },
+      { name: "description", content: "Interactive recaps and quizzes for each guest speaker session of the MMD course." },
       { property: "og:title", content: "ESSEC Digital Platforms - Guest Speaker Hub" },
       { property: "og:description", content: "A considered recap of each guest speaker session, followed by a quiz to test what stuck." },
       { property: "og:type", content: "website" },
@@ -255,7 +255,7 @@ function Index() {
 
       <footer className="border-t border-border py-8">
         <p className="mx-auto max-w-4xl px-5 text-xs uppercase tracking-[0.2em] text-muted-foreground sm:px-8">
-          ESSEC MMD · Digital Platforms · Guest Speaker Series
+          ESSEC Business School · MMD · Roberto Bottazzo (B00840277, Group D)
         </p>
       </footer>
     </div>
