@@ -2,6 +2,8 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { SESSION2 } from "@/data/session2";
 import { GuestSessionView } from "@/components/session/GuestSessionView";
+import { SESSION3 } from "@/data/session3";
+import { SpeakerOnlySessionView } from "@/components/session/SpeakerOnlySessionView";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -21,7 +23,7 @@ type Question = { part: string; q: string; options: string[]; answer: number; ex
 type Bullet = { term: string; desc: string };
 type SummaryItem = { title: string; body?: string; bullets?: Bullet[]; note?: string };
 type SummaryCard = { part: string; heading: string; items: SummaryItem[] };
-type Session = { id: string; label: string; title: string; active: boolean; summary?: SummaryCard[]; questions?: Question[] };
+type Session = { id: string; label: string; title: string; active: boolean; badge?: string; heading?: string; summary?: SummaryCard[]; questions?: Question[] };
 
 const SESSION1_SUMMARY: SummaryCard[] = [
   {
@@ -178,7 +180,7 @@ const SESSIONS: Session[] = [
     ],
   },
   { id: SESSION2.id, label: SESSION2.label, title: SESSION2.title, active: true },
-  { id: "s3", label: "Session 3", title: "Guest Speaker", active: false },
+  { id: SESSION3.id, label: SESSION3.label, title: SESSION3.title, heading: SESSION3.heading, badge: SESSION3.badge, active: true },
   { id: "s4", label: "Session 4", title: "Guest Speaker", active: false },
 ];
 
@@ -215,7 +217,9 @@ function Index() {
                 }`}
               >
                 {s.label} — {s.title}
-                {!s.active && <span className="ml-2 text-xs font-medium uppercase tracking-widest text-gold">Soon</span>}
+                {(s.badge ?? (s.active ? null : "Soon")) && (
+                  <span className="ml-2 text-xs font-medium uppercase tracking-widest text-gold">{s.badge ?? "Soon"}</span>
+                )}
               </button>
             ))}
           </nav>
@@ -225,7 +229,7 @@ function Index() {
       <main className="mx-auto max-w-4xl px-5 py-14 sm:px-8 sm:py-20">
         <div className="max-w-2xl">
           <p className="text-[11px] font-semibold uppercase tracking-[0.25em] text-gold">{current.label}</p>
-          <h2 className="mt-2 text-4xl leading-tight tracking-tight sm:text-5xl">{current.title}</h2>
+          <h2 className="mt-2 text-4xl leading-tight tracking-tight sm:text-5xl">{current.heading ?? current.title}</h2>
           <p className="mt-4 text-base leading-relaxed text-muted-foreground">
             My notes on the session, based on the slides, followed by a short quiz.
           </p>
@@ -240,6 +244,8 @@ function Index() {
         )}
 
         {current.id === SESSION2.id && <GuestSessionView session={SESSION2} />}
+
+        {current.id === SESSION3.id && <SpeakerOnlySessionView session={SESSION3} />}
 
         {current.summary && <SummaryCards cards={current.summary} />}
 
