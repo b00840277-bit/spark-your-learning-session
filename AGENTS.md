@@ -28,3 +28,7 @@ use the editor.
   own key and store it in Secrets.
 - **Secrets.** Lovable manages them. Do not put secret values in the repo.
 <!-- LOVABLE:END -->
+
+## Guest session content
+
+Each guest speaker session keeps its own content (speaker, cards, quiz) in a separate file under `src/data/` (`session2.ts`, `session3.ts`, ...), and `src/routes/index.tsx` stays generic: the tab bar and page shell read from those files. Why: new sessions are added by dropping in a data file plus a view, without rewriting an existing session's markup or quiz logic.
